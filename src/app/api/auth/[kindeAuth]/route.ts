@@ -2,9 +2,11 @@ import { handleAuth } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export async function GET(
   request: Request,
-  { params }: { params: { kindeAuth: string } }
+  context: { params: { kindeAuth: string } }
 ) {
-  // Directly return the result of handleAuth
-  // handleAuth() returns a Promise<Response> which is the expected type
-  return handleAuth(request, params.kindeAuth);
+  // Destructure the params from the context object inside the function body
+  const { kindeAuth } = context.params;
+
+  // The handleAuth function returns a Promise<Response>, which is what Next.js expects.
+  return handleAuth(request, kindeAuth);
 }
