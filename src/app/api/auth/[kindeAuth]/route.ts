@@ -1,10 +1,13 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { handleAuth } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export async function GET(
   request: NextRequest,
-  context: { params: { kindeAuth: string } } // no Promise
+  { params }: { params: { kindeAuth: string } } // destructured correctly
 ) {
-  const { kindeAuth } = context.params; // ✅ just destructure
-  return handleAuth(request, kindeAuth);
+  const { kindeAuth } = params;
+  const response = await handleAuth(request, kindeAuth);
+  
+  // handleAuth usually returns a Response object
+  return response;
 }
