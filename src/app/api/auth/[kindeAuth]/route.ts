@@ -3,8 +3,8 @@ import { handleAuth } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export async function GET(
   request: NextRequest,
-  context: { params: Promise<{ kindeAuth: string }> }
+  context: { params: { kindeAuth: string } } // no Promise
 ) {
-  const { kindeAuth } = await context.params; // ✅ await before use
+  const { kindeAuth } = context.params; // ✅ just destructure
   return handleAuth(request, kindeAuth);
 }
