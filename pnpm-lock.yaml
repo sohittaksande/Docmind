@@ -1852,6 +1852,9 @@ packages:
   '@types/node@18.19.123':
     resolution: {integrity: sha512-K7DIaHnh0mzVxreCR9qwgNxp3MH9dltPNIEddW9MYUlcKAzm+3grKNSTe2vCJHI1FaLpvpL5JGJrz1UZDKYvDg==}
 
+  '@types/node@20.19.12':
+    resolution: {integrity: sha512-lSOjyS6vdO2G2g2CWrETTV3Jz2zlCXHpu1rcubLKpz9oj+z/1CceHlj+yq53W+9zgb98nSov/wjEKYDNauD+Hw==}
+
   '@types/node@20.19.9':
     resolution: {integrity: sha512-cuVNgarYWZqxRJDQHEB58GEONhOK79QVR/qYx4S7kcUObQvUwvFnYxJuuHUKm2aieN9X3yZB4LZsuYNU1Qphsw==}
 
@@ -3463,6 +3466,23 @@ packages:
 
   langsmith@0.3.62:
     resolution: {integrity: sha512-ApoGLs28cJCxL91l1PDDkjsA4oLrbeNlE1pyTvyopqXq9bNJrP8JPUNWZm/tpU0DzZpvZFctRzru4gNAr/bkxg==}
+    peerDependencies:
+      '@opentelemetry/api': '*'
+      '@opentelemetry/exporter-trace-otlp-proto': '*'
+      '@opentelemetry/sdk-trace-base': '*'
+      openai: '*'
+    peerDependenciesMeta:
+      '@opentelemetry/api':
+        optional: true
+      '@opentelemetry/exporter-trace-otlp-proto':
+        optional: true
+      '@opentelemetry/sdk-trace-base':
+        optional: true
+      openai:
+        optional: true
+
+  langsmith@0.3.66:
+    resolution: {integrity: sha512-d50FJ25HPAT2e/6u7oPAYFYH7uvVhxf7vThAOE5tP6YFIUHwLMBmJj8R4Z7APp5jF4/m8upvbK4J4jP5UIN+Eg==}
     peerDependencies:
       '@opentelemetry/api': '*'
       '@opentelemetry/exporter-trace-otlp-proto': '*'
@@ -5526,7 +5546,7 @@ snapshots:
       camelcase: 6.3.0
       decamelize: 1.2.0
       js-tiktoken: 1.0.21
-      langsmith: 0.3.62(@opentelemetry/api@1.9.0)(openai@5.12.2(ws@8.18.3)(zod@4.0.17))
+      langsmith: 0.3.66(@opentelemetry/api@1.9.0)(openai@5.12.2(ws@8.18.3)(zod@4.0.17))
       mustache: 4.2.0
       p-queue: 6.6.2
       p-retry: 4.6.2
@@ -6399,12 +6419,16 @@ snapshots:
 
   '@types/node-fetch@2.6.13':
     dependencies:
-      '@types/node': 20.19.9
+      '@types/node': 20.19.12
       form-data: 4.0.4
 
   '@types/node@18.19.123':
     dependencies:
       undici-types: 5.26.5
+
+  '@types/node@20.19.12':
+    dependencies:
+      undici-types: 6.21.0
 
   '@types/node@20.19.9':
     dependencies:
@@ -8210,6 +8234,19 @@ snapshots:
       - ws
 
   langsmith@0.3.62(@opentelemetry/api@1.9.0)(openai@5.12.2(ws@8.18.3)(zod@4.0.17)):
+    dependencies:
+      '@types/uuid': 10.0.0
+      chalk: 4.1.2
+      console-table-printer: 2.14.6
+      p-queue: 6.6.2
+      p-retry: 4.6.2
+      semver: 7.7.2
+      uuid: 10.0.0
+    optionalDependencies:
+      '@opentelemetry/api': 1.9.0
+      openai: 5.12.2(ws@8.18.3)(zod@4.0.17)
+
+  langsmith@0.3.66(@opentelemetry/api@1.9.0)(openai@5.12.2(ws@8.18.3)(zod@4.0.17)):
     dependencies:
       '@types/uuid': 10.0.0
       chalk: 4.1.2
