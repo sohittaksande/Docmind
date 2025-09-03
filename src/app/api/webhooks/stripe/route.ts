@@ -36,7 +36,7 @@ export async function POST(request: Request) {
 
   if (event.type === 'checkout.session.completed') {
     const subscription =
-    await stripe.subscriptions.retrieve(session.subscription as string)as Stripe.Subscription;;
+    await stripe.subscriptions.retrieve(session.subscription as string)as Stripe.Subscription;
 
     await db.user.update({
       where: {
@@ -56,7 +56,7 @@ export async function POST(request: Request) {
   if (event.type === 'invoice.payment_succeeded') {
     // Retrieve the subscription details from Stripe.
    const subscription =
-    await stripe.subscriptions.retrieve(session.subscription as string) as Stripe.Subscription;;
+    await stripe.subscriptions.retrieve(session.subscription as string) as Stripe.Subscription;
 
     await db.user.update({
       where: {
