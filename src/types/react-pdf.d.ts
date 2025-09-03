@@ -1,10 +1,11 @@
 declare module "react-pdf" {
   import * as React from "react";
+  import type { PDFDocumentProxy, PDFPageProxy } from "pdfjs-dist";
 
   export interface DocumentProps {
     file?: string | File | Uint8Array | null;
-    onLoadSuccess?: (pdf: import("pdfjs-dist").PDFDocumentProxy) => void;
-    onLoadError?: (error: any) => void;
+    onLoadSuccess?: (pdf: PDFDocumentProxy) => void;
+    onLoadError?: (error: Error) => void;
     children?: React.ReactNode;
     className?: string;
   }
@@ -19,10 +20,17 @@ declare module "react-pdf" {
     renderTextLayer?: boolean;
     className?: string;
     loading?: React.ReactNode;
-    onRenderSuccess?: () => void;
+    onRenderSuccess?: (page?: PDFPageProxy) => void;
   }
 
   export const Document: React.FC<DocumentProps>;
   export const Page: React.FC<PageProps>;
-  export const pdfjs: any;
+
+  // pdfjs object with worker options etc.
+  export const pdfjs: {
+    version: string;
+    GlobalWorkerOptions: {
+      workerSrc: string;
+    };
+  };
 }
